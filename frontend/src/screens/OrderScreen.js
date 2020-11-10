@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { addToCart, removeFromCart } from '../actions/cartActions';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import CheckoutSteps from '../components/CheckoutSteps';
+import { useDispatch, useSelector } from 'react-redux';
 import { createOrder, detailsOrder, payOrder } from '../actions/orderActions';
+import { addToCart, removeFromCart } from '../actions/cartActions';
 import PaypalButton from '../components/PaypalButton';
+import CheckoutSteps from '../components/CheckoutSteps';
 
 
 function OrderScreen(props) {
@@ -30,6 +30,7 @@ function OrderScreen(props) {
 
   const orderDetails = useSelector(state => state.orderDetails);
   const { loading, order, error } = orderDetails;
+  
   const payHandler = ()=>{ };
   console.log(orderDetails)
 
@@ -73,7 +74,7 @@ function OrderScreen(props) {
           				<div>Cart is empty</div>: order.orderItems.map(item=>
           					<li key={item._id}>
           						<div className="cart-image">
-          							<image src={item.image} alt="product"/>
+          							<img src={item.image} alt="product"/>
           						</div>
           						<div className="cart-name">
           							<div>

@@ -1,8 +1,18 @@
 import express from 'express';
 import Order from '../models/orderModel';
-import { isAuth } from '../util';
+import { isAdmin,isAuth } from '../util';
 
 const router = express.Router();
+
+router.get('/', isAuth, isAdmin, async(req, res)=>{
+	const orderList = await Order.find({}).populate('user');
+	res.send(orderList);	
+});
+
+router.get("/mine", isAuth, async (req, res) => {
+  const orders = await Order.find({ user: req.user._id });
+  res.send(orders);
+});
 
 router.get('/:id', isAuth, async(req, res)=>{
 	const order = await Order.findOne({_id: req.params.id});
@@ -11,9 +21,22 @@ router.get('/:id', isAuth, async(req, res)=>{
 	} else{
 		res.status(404).send("Order not found.")
 	}
+}); 
+
+router.delete('/:id', isAuth,isAdmin, async(req, res)=>{
+	const order = await Order.findOne({_id: req.params.id});
+	if(order){
+		const deleteOrder = await order.remove();
+		res.send({ message: 'Order deleted', order: deleteOrder });
+	} else{
+		res.status(404).send("Order not found.")
+	}
 });
 
 router.post("/", isAuth, async(req, res)=>{
+	if(req.body.orderItems.length === 0) {
+		res.status(400).send({message: 'Cart is empty' });
+	} else {
 	const newOrder= new Order({
 		orderItems: req.body.orderItems,
 		user: req.user._id,
@@ -26,6 +49,7 @@ router.post("/", isAuth, async(req, res)=>{
 	});
 	const newOrderCreated = await newOrder.save();
 	res.status(201).send({ message: "New Order Created", data: newOrderCreated});
+	}
 });
 
 router.put("/:id/pay", isAuth, async (req,res)=>{

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { addToCart, removeFromCart } from '../actions/cartActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { createOrder } from '../actions/orderActions'
+import { addToCart, removeFromCart } from '../actions/cartActions';
 
 function PlaceOrderScreen(props) {
 
@@ -18,9 +18,10 @@ function PlaceOrderScreen(props) {
   	props.history.push("/payment");
   }
 
-  const itemsPrice = cartItems.reduce((a,c) =>a + c.price * c.qty, 0);
+  const roundOffPrice = (num) => Number(num.toFixed(2)); 
+  const itemsPrice = roundOffPrice( cartItems.reduce((a,c) =>a + c.price * c.qty, 0));
   const shippingPrice = itemsPrice > 150 ? 0 : 15;
-  const taxPrice = 1.15	* itemsPrice;
+  const taxPrice = roundOffPrice(1.15	* itemsPrice);
   const totalPrice= itemsPrice + shippingPrice + taxPrice;
 
   const dispatch = useDispatch();
@@ -74,7 +75,7 @@ function PlaceOrderScreen(props) {
           				<div>Cart is empty</div>: cartItems.map(item=>
           					<li>
           						<div className="cart-image">
-          							<image src={item.image} alt="product"/>
+          							<img src={item.image} alt="product"/>
           						</div>
           						<div className="cart-name">
           							<div>
