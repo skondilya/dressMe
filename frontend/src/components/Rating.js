@@ -1,9 +1,7 @@
 import React from 'react';
 
 export default function Rating(props) {
-  return !props.value ? (
-    <div></div>
-  ) : (
+  return (
     <div className="rating">
       <span>
         <i
@@ -64,3 +62,4 @@ export default function Rating(props) {
     </div>
   );
 }
+  

@@ -14,7 +14,7 @@ import OrderScreen from './screens/OrderScreen';
 import OrderHistoryScreen from './screens/OrderHistoryScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
 import ProfileScreen from './screens/ProfileScreen';
-import ProductListScreen from './screens/ProductListScreen'
+import ProductListScreen from './screens/ProductListScreen';
 
 function App() {
 
@@ -80,16 +80,10 @@ function App() {
                   </Link>
                   <ul className="dropdown-content">
                     <li>
-                      <Link to="/dashboard">Dashboard</Link>
-                    </li>
-                    <li>
                        <Link to="/productList">Products</Link>
                     </li>
                     <li>
                        <Link to="/orderhistory">Orders</Link>
-                    </li>
-                      <li>
-                       <Link to="/userlist">Users</Link>
                     </li>
                   </ul>
                 </div>
@@ -100,13 +94,13 @@ function App() {
         <aside className="sidebar">
           <h3>Shopping Categories</h3>
           <button className="sidebar-close-button" onClick={closeMenu}>x</button>
-          <ul>
+          <ul className="categories">
             <li>
-              <a href="index.html">Dress</a>
+              <Link to="/category/dress">Dresses</Link>
             </li>
 
             <li>
-              <a href="index.html">Accessories</a>
+              <Link to="/category/accessories">Accessories</Link>
             </li>
 
           </ul>

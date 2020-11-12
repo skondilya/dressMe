@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { signin } from '../actions/userActions';
 import { saveProduct, listProducts, deleteProduct } from '../actions/productActions';
 
-function ProductsScreen(props) {
+function ProductEditScreen(props) {
   const [modalVisible, setModalVisible] = useState(false);
   const [id, setId] = useState('');
   const [name, setName] = useState('');
@@ -166,4 +166,4 @@ function ProductsScreen(props) {
     </div>
   </div>
 }
-export default ProductsScreen;
+export default ProductEditScreen;
