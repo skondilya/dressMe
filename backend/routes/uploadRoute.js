@@ -1,26 +1,26 @@
-import express from 'express';
-import multer from 'multer';
+// import express from 'express';
+// import multer from 'multer';
 // import multerS3 from 'multer-s3';
 // import aws from 'aws-sdk';
 // import config from '../config';
-import { isAuth } from '../utils.js';
+// import { isAuth } from '../utils.js';
 
-const storage = multer.diskStorage({
-	destination(req,file,cd){
-		cb(null,'uploads/');
-	},
-	filename(req,file,cb) {
-		cb(null, `${Date.now()}.jpg`);
-	},
-});
+// const storage = multer.diskStorage({
+// 	destination(req,file,cd){
+// 		cb(null,'uploads/');
+// 	},
+// 	filename(req,file,cb) {
+// 		cb(null, `${Date.now()}.jpg`);
+// 	},
+// });
 
-const upload = multer({storage});
+// const upload = multer({storage});
 
-const router = express.Router();
+// const router = express.Router();
 
-router.post('/',isAuth, upload.single('image'), (req,res)=>{
-	res.send(`/${req.file.path}`);
-});
+// router.post('/',isAuth, upload.single('image'), (req,res)=>{
+// 	res.send(`/${req.file.path}`);
+// });
 
 // aws.config.update({
 // 	accessKeyId: config.accessKeyId,
@@ -43,4 +43,4 @@ router.post('/',isAuth, upload.single('image'), (req,res)=>{
 // 	res.send(req.file.location);
 // });
 
-export default router;
+// export default router;

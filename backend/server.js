@@ -36,9 +36,9 @@ app.get("/api/config/paypal", (req,res)=>{
 //   res.send('Server is ready');
 // });
 
-// app.use(express.static(path.join(__dirname, '/../frontend/build')));
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`));
-// });	
+app.use(express.static(path.join(__dirname, '/../frontend/build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`));
+});	
 
-app.listen(8080, () => { console.log("Server at http://localhost:8080")});
+app.listen(5000, () => { console.log("Server at http://localhost:5000")});
