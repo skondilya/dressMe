@@ -41,8 +41,8 @@ router.post('/:id/reviews', isAuth, async (req, res) => {
     product.reviews.push(review);
     product.numReviews = product.reviews.length;
     product.rating =
-      product.reviews.reduce((a, c) => c.rating + a, 0) /
-      product.reviews.length;
+      (product.reviews.reduce((a, c) => c.rating + a, 0) /
+      product.reviews.length).toFixed(2);
     const updatedProduct = await product.save();
     res.status(201).send({
       data: updatedProduct.reviews[updatedProduct.reviews.length - 1],

@@ -8,13 +8,12 @@ import { useSelector,useDispatch } from 'react-redux';
 import { logout } from './actions/userActions';
 import RegisterScreen from './screens/RegisterScreen';
 import ShippingScreen from './screens/ShippingScreen';
+import ProductsScreen from './screens/ProductsScreen';
 import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import OrderHistoryScreen from './screens/OrderHistoryScreen';
-import ProductEditScreen from './screens/ProductEditScreen';
 import ProfileScreen from './screens/ProfileScreen';
-import ProductListScreen from './screens/ProductListScreen';
 
 function App() {
 
@@ -80,7 +79,7 @@ function App() {
                   </Link>
                   <ul className="dropdown-content">
                     <li>
-                       <Link to="/productList">Products</Link>
+                       <Link to="/products">Products</Link>
                     </li>
                     <li>
                        <Link to="/orderhistory">Orders</Link>
@@ -111,17 +110,16 @@ function App() {
             <Route path="/order/:id" component={OrderScreen} />
             <Route path="/orderhistory" component={OrderHistoryScreen} />
             <Route path="/profile" component={ProfileScreen} />
-            <Route path="/productlist" component={ProductListScreen} />
+            <Route path="/products" component={ProductsScreen} />
             <Route path="/shipping" component={ShippingScreen} />
             <Route path="/payment" component={PaymentScreen} />
             <Route path="/placeorder" component={PlaceOrderScreen} />
             <Route path="/signin" component={SigninScreen} />
             <Route path="/register" component={RegisterScreen} />
-            <Route path="/product/:id" exact={true} component={ProductScreen} />
             <Route path="/cart/:id?" component={CartScreen} />
             <Route path="/" exact={true} component={HomeScreen} />
             <Route path="/category/:id" component={HomeScreen} />
-            <Route path="/product/:id/edit" exact={true} component={ProductEditScreen} />
+            <Route path="/product/:id" exact={true} component={ProductScreen} />
           </div>
 
         </main>
