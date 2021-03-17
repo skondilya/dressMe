@@ -2,9 +2,9 @@
 
 Fashion e-commerce Website similar to Amazon using MERN stack. 
 
-# Check out the website https://mydressmeapp.herokuapp.com/
+**Check out the website https://mydressmeapp.herokuapp.com/
 
-### Technologies used - Mongoose, MongoDb, React, Express, Node.js, Jason web token, Grid, Flex, Heroku, JS, HTML, CSS, Axios, React Hooks, MERN stack. 
+Technologies used - Mongoose, MongoDb, React, Express, Node.js, Jason web token, Grid, Flex, Heroku, JS, HTML, CSS, Axios, React Hooks, MERN stack. 
 
 - Run locally 
    - Run Backend
